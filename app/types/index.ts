@@ -20,3 +20,7 @@ export type SafeReservation = Omit<
   endDate: string;
   listing: SafeListing;
 };
+
+export type InputValidation = {
+  [key: string]: (value: string) => boolean;
+};

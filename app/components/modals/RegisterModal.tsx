@@ -18,6 +18,7 @@ const RegisterModal = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
+  const emailRegexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const {
     register,
@@ -64,6 +65,9 @@ const RegisterModal = () => {
         register={register}
         errors={errors}
         required
+        validate={{
+          matchPattern: (value) => emailRegexPattern.test(value),
+        }}
       />
       <Input
         id="name"

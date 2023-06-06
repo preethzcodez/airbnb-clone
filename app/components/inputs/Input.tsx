@@ -2,6 +2,7 @@
 
 import { BiDollar } from "react-icons/bi";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { InputValidation } from "@/app/types";
 
 interface InputProps {
   id: string;
@@ -12,6 +13,7 @@ interface InputProps {
   required?: boolean;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
+  validate?: InputValidation;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   required,
   register,
   errors,
+  validate = {},
 }) => {
   return (
     <div className="w-full relative">
@@ -39,7 +42,7 @@ const Input: React.FC<InputProps> = ({
       <input
         id={id}
         disabled={disabled}
-        {...register(id, { required })}
+        {...register(id, { required, validate })}
         placeholder=" "
         type={type}
         className={`
