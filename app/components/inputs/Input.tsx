@@ -1,5 +1,3 @@
-"use client";
-
 import { BiDollar } from "react-icons/bi";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { InputValidation } from "@/app/types";
@@ -64,21 +62,22 @@ const Input: React.FC<InputProps> = ({
         `}
       />
       <label
+        htmlFor={id} // Add htmlFor attribute with the input's id
         className={`
-        absolute
-        text-md
-        duration-150
-        transform
-        -translate-y-3
-        top-5
-        z-10
-        origin-[0]
-        ${formatPrice ? "left-9" : "left-4"}
-        peer-placeholder-shown:scale-100
-        peer-placeholder-shown:translate-y-0
-        peer-focus:-translate-y-4
-        ${errors[id] ? "text-rose-500" : "text-zinc-400"}
-      `}
+          absolute
+          text-md
+          duration-150
+          transform
+          -translate-y-3
+          top-5
+          z-10
+          origin-[0]
+          ${formatPrice ? "left-9" : "left-4"}
+          peer-placeholder-shown:scale-100
+          peer-placeholder-shown:translate-y-0
+          peer-focus:-translate-y-4
+          ${errors[id] ? "text-rose-500" : "text-zinc-400"}
+        `}
       >
         {label}
       </label>
