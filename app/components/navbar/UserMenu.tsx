@@ -212,10 +212,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <hr />
                 <MenuItem
                   onClick={() => {
-                    //signOut();
+                    aboutModal.onOpen();
                     handleItemClick();
                   }}
-                  label="About"
+                  label="About Me"
                 />
               </>
             )}
