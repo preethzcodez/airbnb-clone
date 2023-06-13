@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
+import useConfirmationModal from "../components/hooks/useConfirmationModal";
 
 interface PropertiesClientProps {
   listings: SafeListing[];
@@ -19,6 +20,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
+  const confirmationModal = useConfirmationModal();
   const [deletingId, setDeletingId] = useState("");
 
   const onCancel = useCallback(
@@ -61,7 +63,14 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             key={listing.id}
             data={listing}
             actionId={listing.id}
-            onAction={onCancel}
+            onAction={() => {
+              confirmationModal.onOpen(
+                "Delete Property",
+                "Are you sure you want to delete ?",
+                onCancel,
+                listing.id
+              );
+            }}
             currentUser={currentUser}
             disabled={deletingId === listing.id}
             actionLabel="Delete Property"

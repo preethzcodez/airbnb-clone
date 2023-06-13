@@ -11,16 +11,17 @@ import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
 import { SafeUser } from "@/app/types";
 import Link from "next/link";
+import useAboutModal from "../hooks/useAboutModal";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
-  const router = useRouter();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
+  const aboutModal = useAboutModal();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -59,6 +60,16 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     rentModal.onOpen();
     setIsOpen(false);
   }, [currentUser, loginModal, rentModal]);
+
+  const onAbout = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    // Open Rent Modal
+    aboutModal.onOpen();
+    setIsOpen(false);
+  }, [currentUser, loginModal, aboutModal]);
 
   return (
     <div className="relative" ref={menuRef}>
@@ -168,11 +179,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <hr />
                 <MenuItem
                   onClick={() => {
-                    signOut();
+                    aboutModal.onOpen();
                     handleItemClick();
                   }}
-                  label="About"
+                  label="About Me"
                 />
+                <hr />
                 <MenuItem
                   onClick={() => {
                     signOut();
