@@ -5,7 +5,13 @@ import Modal from "./Modal";
 import useAboutModal from "../hooks/useAboutModal";
 import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import Link from "next/link";
-import { SiNextdotjs, SiReact, SiMongodb, SiTailwindcss } from "react-icons/si";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiMongodb,
+  SiTailwindcss,
+  SiPrisma,
+} from "react-icons/si";
 
 const AboutModal = () => {
   const aboutModal = useAboutModal();
@@ -31,7 +37,10 @@ const AboutModal = () => {
             </Link>
           </div>
           <div className="flex gap-3">
-            <Link target="_blank" href="https://github.com/preethzcodez">
+            <Link
+              target="_blank"
+              href="https://www.linkedin.com/in/preethzcodez/"
+            >
               <AiFillLinkedin size={30} />
             </Link>
             <Link target="_blank" href="https://github.com/preethzcodez">
@@ -60,6 +69,9 @@ const AboutModal = () => {
           </Link>
           <Link target="_blank" href="https://react.dev/">
             <SiReact size={30} />
+          </Link>
+          <Link target="_blank" href="https://www.prisma.io/">
+            <SiPrisma size={30} />
           </Link>
           <Link target="_blank" href="https://www.mongodb.com/atlas/database">
             <SiMongodb size={30} />
